@@ -1,11 +1,13 @@
 const maps = [
     { name: "Mirage", img: "assets/img/mapas/mirage.jpg" },
-    { name: "Inferno", img: "assets/img/mapas/inferno.jpg" },
+    { name: "Inferno", img: "assets/img/mapas/inferno.jpeg" },
     { name: "Nuke", img: "assets/img/mapas/nuke.avif" },
     { name: "Overpass", img: "assets/img/mapas/overpass.webp" },
     { name: "Ancient", img: "assets/img/mapas/ancient.jpg" },
     { name: "Dust 2", img: "assets/img/mapas/dust2.jpg" },
     { name: "Train", img: "assets/img/mapas/train.jpg" },
+    { name: "Anubis", img: "assets/img/mapas/anubis.jpg", disabled: true },
+    { name: "Vertigo", img: "assets/img/mapas/vertigo.webp", disabled: true },
 ];
 
 let bans = [];
@@ -25,10 +27,14 @@ function renderMaps() {
         const card = document.createElement("div");
         card.className = "map-card";
 
+        const isDisabled = map.disabled;
         const isBanned = bans.includes(map.name);
-        const isPicked = bans.length === totalBans && !isBanned && (maps.find(m => !bans.includes(m.name))?.name === map.name);
+        const isPicked = !isDisabled && bans.length === totalBans && !isBanned &&
+            (maps.find(m => !bans.includes(m.name) && !m.disabled)?.name === map.name);
 
-        if (isBanned) {
+        if (isDisabled) {
+            card.classList.add("disabled");
+        } else if (isBanned) {
             card.classList.add("banned");
         } else if (isPicked) {
             card.classList.add("picked");
@@ -52,7 +58,11 @@ function renderMaps() {
     });
 }
 
+
 function banMap(mapName) {
+    const map = maps.find(m => m.name === mapName);
+    if (!map || map.disabled) return;
+
     if (bans.includes(mapName) || bans.length >= totalBans) return;
 
     bans.push(mapName);
@@ -62,7 +72,7 @@ function banMap(mapName) {
     banSound.play();
 
     if (bans.length === totalBans) {
-        const remaining = maps.find(m => !bans.includes(m.name));
+        const remaining = maps.find(m => !bans.includes(m.name) && !m.disabled);
 
         pickSound.currentTime = 0;
         pickSound.play();
