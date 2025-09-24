@@ -1,0 +1,180 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    min-height: 100vh;
+    color: #fff;
+
+    background: linear-gradient(120deg, #071018 0%, #08312a 30%, #0f3a2e 50%, #5a3f22 78%, #2b1206 100%);
+    background-size: 300% 300%;
+    animation: bgShift 15s ease infinite;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes bgShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+#mapPool {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px auto;
+    max-width: 1000px;
+}
+
+.map-card {
+    width: 180px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #222;
+}
+
+.map-card.waiting {
+    animation: mapwait 1.2s infinite ease-in-out;
+}
+
+.map-card.banned {
+    cursor: not-allowed;
+    position: relative;
+    animation: banAnim 1.2s infinite ease-in-out;
+}
+
+.map-card.banned img {
+    opacity: 0.4;
+    filter: grayscale(100%);
+}
+
+.map-card.banned::after {
+    content: "BANIDO";
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 0, 0, 0.8);
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.map-card.picked {
+    animation: pickAnim 1.2s infinite ease-in-out;
+}
+
+.map-card:hover {
+    transform: scale(1.05);
+}
+
+.map-card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+
+.map-name {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #222;
+}
+
+#status {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.picked-name {
+    animation: pickText 1.2s infinite ease-in-out;
+    font-weight: bold;
+}
+
+@keyframes pickText {
+    0% {
+        color: #00ff66;
+        text-shadow: 0 0 5px #00ff66;
+    }
+
+    50% {
+        color: #006633;
+        text-shadow: 0 0 15px #006633;
+    }
+
+    100% {
+        color: #00ff66;
+        text-shadow: 0 0 5px #00ff66;
+    }
+}
+
+@keyframes mapwait {
+    0% {
+        border-color: #ffdd00;
+        box-shadow: 0 0 5px #ffdd00;
+    }
+
+    50% {
+        border-color: #867400;
+        box-shadow: 0 0 15px #867400;
+    }
+
+    100% {
+        border-color: #ffdd00;
+        box-shadow: 0 0 5px #ffdd00;
+    }
+}
+
+@keyframes banAnim {
+    0% {
+        border-color: red;
+        box-shadow: 0 0 5px red;
+    }
+
+    50% {
+        border-color: darkred;
+        box-shadow: 0 0 15px darkred;
+    }
+
+    100% {
+        border-color: red;
+        box-shadow: 0 0 5px red;
+    }
+}
+
+@keyframes pickAnim {
+    0% {
+        border-color: #00ff66;
+        box-shadow: 0 0 5px #00ff66;
+    }
+
+    50% {
+        border-color: #006633;
+        box-shadow: 0 0 15px #006633;
+    }
+
+    100% {
+        border-color: #00ff66;
+        box-shadow: 0 0 5px #00ff66;
+    }
+}
