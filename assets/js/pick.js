@@ -15,6 +15,9 @@ const totalBans = 6;
 const mapPool = document.getElementById("mapPool");
 const status = document.getElementById("status");
 
+const banSound = new Audio("assets/sounds/ban.mp3");
+const pickSound = new Audio("assets/sounds/pick.mp3");
+
 function renderMaps() {
     mapPool.innerHTML = "";
 
@@ -49,15 +52,21 @@ function renderMaps() {
     });
 }
 
-
 function banMap(mapName) {
     if (bans.includes(mapName) || bans.length >= totalBans) return;
 
     bans.push(mapName);
     turn++;
 
+    banSound.currentTime = 0;
+    banSound.play();
+
     if (bans.length === totalBans) {
         const remaining = maps.find(m => !bans.includes(m.name));
+
+        pickSound.currentTime = 0;
+        pickSound.play();
+
         status.innerHTML = `Mapa escolhido: <span class="picked-name">${remaining.name}</span>`;
     } else {
         status.innerText = `Escolha do ${turn % 2 === 0 ? "Time A" : "Time B"}`;
