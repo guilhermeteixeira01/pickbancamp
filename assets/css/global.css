@@ -44,7 +44,8 @@ h1 {
     border: 2px solid transparent;
     border-radius: 10px;
     overflow: hidden;
-    backdrop-filter: blur(25px);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
     max-width: 460px;
 }
 
@@ -76,10 +77,6 @@ h1 {
     border-radius: 4px;
 }
 
-.map-card.picked {
-    animation: pickAnim 1.2s infinite ease-in-out;
-}
-
 .map-card:hover {
     transform: scale(1.05);
 }
@@ -94,6 +91,7 @@ h1 {
     padding: 12px;
     font-size: clamp(14px, 2vw, 18px);
     backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
 }
 
 #status {
@@ -199,5 +197,17 @@ h1 {
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+    }
+
+    .map-card.waiting {
+        animation: none;
+    }
+
+    .map-card.banned {
+        animation: none;
+    }
+
+    .map-card.picked {
+        animation: none;
     }
 }
