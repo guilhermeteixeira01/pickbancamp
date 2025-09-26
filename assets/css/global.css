@@ -190,8 +190,14 @@ h1 {
     }
 }
 
-/* @media (max-width: 500px) {
-    #mapPool {
-        grid-template-columns: 1fr;
+@media (max-width: 500px) {
+    body {
+        background-image:
+            linear-gradient(120deg, #2d74b3ea 0%, #08312a42 30%, #0f3a2e42 50%, #bd620273 78%, #2b1206 100%),
+            url("../img/wallpaper celular.jpg");
+
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
     }
-} */
+}
