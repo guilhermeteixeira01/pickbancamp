@@ -198,16 +198,4 @@ h1 {
         background-repeat: no-repeat;
         background-position: center;
     }
-
-    .map-card.waiting {
-        animation: none;
-    }
-
-    .map-card.banned {
-        animation: none;
-    }
-
-    .map-card.picked {
-        animation: none;
-    }
 }
