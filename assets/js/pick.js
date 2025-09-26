@@ -8,6 +8,7 @@ const maps = [
     { name: "Train", img: "assets/img/mapas/train.jpg" },
     { name: "Anubis", img: "assets/img/mapas/anubis.jpg", disabled: true },
     { name: "Vertigo", img: "assets/img/mapas/vertigo.webp", disabled: true },
+    { name: "Cobblestone", img: "assets/img/mapas/cobblestone.jpg", disabled: true }
 ];
 
 let bans = [];
@@ -15,7 +16,7 @@ let turn = 0;
 const totalBans = 6;
 
 const mapPool = document.getElementById("mapPool");
-const status = document.getElementById("status");
+const statuss = document.getElementById("status");
 
 const banSound = new Audio("assets/sounds/ban.mp3");
 const pickSound = new Audio("assets/sounds/pick.mp3");
@@ -77,9 +78,9 @@ function banMap(mapName) {
         pickSound.currentTime = 0;
         pickSound.play();
 
-        status.innerHTML = `Mapa escolhido: <span class="picked-name">${remaining.name}</span>`;
+        statuss.innerHTML = `Mapa escolhido: <span class="picked-name">${remaining.name}</span>`;
     } else {
-        status.innerText = `Escolha do ${turn % 2 === 0 ? "Time A" : "Time B"}`;
+        statuss.innerText = `Escolha do ${turn % 2 === 0 ? "Time A" : "Time B"}`;
     }
 
     renderMaps();
