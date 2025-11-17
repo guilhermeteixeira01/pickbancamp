@@ -49,6 +49,10 @@ h1 {
     max-width: 460px;
 }
 
+.map-card.picked {
+    animation: pickAnim 1.2s infinite ease-in-out;
+}
+
 .map-card.waiting {
     animation: mapwait 1.2s infinite ease-in-out;
 }
@@ -186,9 +190,39 @@ h1 {
     #mapPool {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .map-card.picked {
+        border-color: #00ff66;
+        box-shadow: 0 0 5px #00ff66;
+    }
+
+    .map-card.waiting {
+        border-color: #ffdd00;
+        box-shadow: 0 0 5px #ffdd00;
+    }
+
+    .map-card.banned {
+        border-color: red;
+        box-shadow: 0 0 5px red;
+    }
 }
 
 @media (max-width: 500px) {
+    .map-card.picked {
+        border-color: #00ff66;
+        box-shadow: 0 0 5px #00ff66;
+    }
+
+    .map-card.waiting {
+        border-color: #ffdd00;
+        box-shadow: 0 0 5px #ffdd00;
+    }
+
+    .map-card.banned {
+        border-color: red;
+        box-shadow: 0 0 5px red;
+    }
+
     body {
         background-image:
             linear-gradient(120deg, #2d74b3ea 0%, #08312a42 30%, #0f3a2e42 50%, #bd620273 78%, #2b1206 100%),
