@@ -209,16 +209,19 @@ h1 {
 
 @media (max-width: 500px) {
     .map-card.picked {
+        animation: none;
         border-color: #00ff66;
         box-shadow: 0 0 5px #00ff66;
     }
 
     .map-card.waiting {
+        animation: none;
         border-color: #ffdd00;
         box-shadow: 0 0 5px #ffdd00;
     }
 
     .map-card.banned {
+        animation: none;
         border-color: red;
         box-shadow: 0 0 5px red;
     }
